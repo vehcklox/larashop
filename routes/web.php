@@ -16,3 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('/products', 'ProductsController@index');
+
+Route::put('/cart/{product}', 'CartController@update');
+Route::get('/cart', 'CartController@index');
