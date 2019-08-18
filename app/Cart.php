@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
 class Cart
 {
     public $items;
@@ -24,10 +22,12 @@ class Cart
 
     public function totalPrice()
     {
-        $totalPrice = $this->items->reduce(function ($total, $item) {
+        return number_format($this->total() / 100, 2);
+    }
+
+    public function total() {
+        return $this->items->reduce(function ($total, $item) {
             return $total + $item->price;
         });
-
-        return number_format($totalPrice / 100, 2);
     }
 }
